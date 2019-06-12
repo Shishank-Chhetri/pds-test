@@ -102,20 +102,80 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Images\Crowned_Portcullis.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Resources\css\style.css">
+      <DependentUpon>style.scss</DependentUpon>
+    </Content>
+    <Content Include="Resources\css\style.min.css">
+      <DependentUpon>style.css</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CalanderEvents.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
+    <Content Include="App_Code\Utilities.cshtml" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Resources\css\_variableMixin.scss" />
+    <Content Include="Resources\css\_layout.scss" />
+    <Content Include="Resources\css\style.scss" />
+    <Content Include="Resources\css\_helper.scss" />
+    <Content Include="Resources\css\_typography.scss" />
+    <Content Include="Views\Components\Calander.cshtml" />
+    <Content Include="Views\Components\Calander_MonthView.cshtml" />
+    <Content Include="Resources\css\_calander.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\bouncing\all.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\bouncing\bounce.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\bouncing\bounceDown.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\bouncing\bounceLeft.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\bouncing\bounceRight.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\bouncing\bounceUp.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\fading\all.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\fading\fade.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\fading\fadeDown.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\fading\fadeDownBig.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\fading\fadeLeft.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\fading\fadeLeftBig.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\fading\fadeRight.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\fading\fadeRightBig.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\fading\fadeUp.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\fading\fadeUpBig.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\rotating\all.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\rotating\rotate.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\rotating\rotateDownLeft.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\rotating\rotateDownRight.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\rotating\rotateUpLeft.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\rotating\rotateUpRight.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\sliding\all.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\sliding\slideDown.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\sliding\slideLeft.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\sliding\slideRight.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\sliding\slideUp.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\zooming\all.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\zooming\zoom.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\zooming\zoomDown.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\zooming\zoomLeft.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\zooming\zoomRight.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\animations\zooming\zoomUp.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\make-transitions.scss" />
+    <Content Include="Resources\css\vendor\vue2_animate\vue2-animate.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -125,8 +185,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+    <Folder Include="Resources\js\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

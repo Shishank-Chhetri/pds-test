@@ -1,0 +1,61 @@
+﻿body {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    min-height: 100vh;
+    color: $primary;
+
+    @supports #{$supportsGrid} {
+        display: grid;
+        grid-auto-rows: auto;
+        grid-auto-rows: 50px auto min-content;
+        grid-template-areas: "header" "main" "footer"
+    }
+
+    header, #content, footer {
+        > *:first-child {
+            margin-top: 0px;
+        }
+
+        > *:last-child {
+            margin-bottom: 0px;
+        }
+    }
+
+    header, footer {
+        text-align: center;
+    }
+
+    header {
+        background: $primary;
+        grid-area: header;
+        color: $secondary;
+
+        .logo {
+            height: 100%;
+            display: inline-block;
+            text-decoration: none;
+
+            img, h1 {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            img {
+                height: 100%;
+            }
+        }
+
+        @include setIeHeight(50px);
+    }
+
+    #content {
+        grid-area: main;
+        @include setIeHeight(calc(100vh - 50px));
+    }
+
+    footer {
+        grid-area: footer;
+        @include font-size(0.8);
+    }
+}

@@ -1,0 +1,54 @@
+﻿<script type="text/x-template" id="pds-calander-monthly-template">
+    <div class="monthyView">
+        <h4 class="date-labels" v-for="day in dayNames">{{day}}</h4>
+        <div class="date" v-for="(number, i) in (lastDate + firstDay)" :key="i" v-on:click="weekExpanded = weekExpanded !== Math.ceil((i+1)/7) ? Math.ceil((i+1)/7) : null">
+            <div v-if="i >= firstDay">
+                {{i - firstDay + 1}}
+                
+                @*i + 1 so that first cell (0) has the right value*@
+                <transition name="fade">
+                    <div class="event-summary" v-show="Math.ceil((i+1)/7) === weekExpanded" v-on:click.stop="">
+                        aafsdsdasdfads
+                    </div>  
+                </transition>
+            </div>
+            <div v-else>&nbsp;</div>
+        </div>
+    </div>
+</script>
+<script>
+    Vue.component('events-month-view', {
+        template: '#pds-calander-monthly-template',
+        props: {
+            displayYear: Number,
+            displayMonth: Number //0 based
+        },
+        computed: {
+            lastDate: function () {
+                return new Date(this.displayYear, this.displayMonth + 1, 0).getDate();
+            },
+            firstDay: function () {
+                var usDay = new Date(this.displayYear, this.displayMonth, 1).getDay();
+                return usDay === 0 ? 6 : usDay - 1; //fix js day starting with sunday as 0
+            }
+        },
+        data: function() {
+            return {
+                weekExpanded : null
+            }
+        },
+        methods: {
+            //getDates: function (year, month) {
+            //    var date = new Date(year, month + 1);
+            //    while (date.getMonth() === month + 1) {
+            //        console.log(date.getDate());
+            //        date = new Date(date.getUTCFullYear, date.getUTCDate, date.getUTCDay + 1);
+            //    }
+            //}
+        },
+        created: function () {
+            this.dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+        }
+    });
+</script>
+

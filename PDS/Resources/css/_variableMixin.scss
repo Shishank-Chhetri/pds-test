@@ -1,0 +1,18 @@
+﻿$primary: #016131;
+$secondary: #bea477;
+
+$supportsGrid: "(grid-gap: initial)";
+
+@mixin setIeHeight($height) {
+    height: $height;
+
+    @supports #{$supportsGrid} {
+        //if grid-gap is supported, ignore the height set above - ie doesn't support supports or grid
+        height: auto;
+    }
+}
+
+@mixin font-size($remSize) {
+    font-size: $remSize * 10 + px;
+    font-size: $remSize + rem;
+}

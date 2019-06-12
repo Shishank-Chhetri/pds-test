@@ -1,0 +1,9 @@
+﻿[
+  {
+    "outputFile": "Resources/css/style.css",
+    "inputFile": "Resources/css/style.scss",
+    "minify": {
+      "enabled": true
+    }
+  }
+]

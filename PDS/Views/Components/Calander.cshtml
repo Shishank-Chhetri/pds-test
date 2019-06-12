@@ -1,0 +1,49 @@
+﻿@RenderPage("~/Views/Components/Calander_MonthView.cshtml")
+<script type="text/x-template" id="pds-calander-template">
+    <div class="calander">
+        <div class="calander-controls">
+            <button class="action prev-month fa fa-angle-left" title="View next month" v-on:click="changeCalander(-1)"><span class="accesiblity-text">View previous month</span></button>
+            <h2>Parliamentary Calander - {{monthName[currentMonth]}} {{currentYear}}</h2>
+            <button class="action next-month fa fa-angle-right" title="View next month" v-on:click="changeCalander(1)"><span class="accesiblity-text">View next month</span></button>
+
+            <p class="text-center" onchange="">
+                <label>Go to Specific Date</label>
+                <input type="date" placeholder="Select the date" v-on:change="updateCalander" />
+            </p>
+        </div>
+        <events-month-view :displayYear="currentYear" :displayMonth="currentMonth"></events-month-view>
+    </div>
+</script>
+<script>
+    Vue.component('events-calander', {
+        template: '#pds-calander-template',
+        data: function() {
+            return {
+                date: new Date()
+            }
+        },
+        computed: {
+            currentMonth: function () {
+                return this.date.getMonth();
+            },
+            currentYear: function () {
+                return this.date.getFullYear()
+            }
+        },
+        methods: {
+            changeCalander: function (monthsChange) {
+                var newDate = this.date.setMonth(this.date.getMonth() + monthsChange);
+                this.date = new Date(newDate);
+            },
+            updateCalander: function (event) {
+                var newDate = new Date(event.currentTarget.value);
+                if (newDate !== 'Invalid Date') {
+                    this.date = newDate;
+                }
+            }
+        },
+        created: function () {
+            this.monthName = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+        }
+    });
+</script>

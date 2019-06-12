@@ -1,0 +1,47 @@
+﻿#calander {
+    .calander {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        .calander-controls {
+            position: relative;
+            margin-bottom: 20px;
+
+            h2 {
+                text-align: center;
+            }
+
+            .action {
+                border: none;
+                background: none;
+                color: $secondary;
+                @include font-size(1.8);
+                position: absolute;
+                top: 0px;
+
+                &.prev-month {
+                    left: 50px;
+                }
+
+                &.next-month {
+                    right: 50px;
+                }
+            }
+        }
+
+        .monthyView {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+
+            h4 {
+                text-align: center;
+            }
+
+            .date {
+                min-height: 60px;
+                padding: 10px;
+                outline: auto;
+                outline-color: $secondary;
+            }
+        }
+    }
+}
