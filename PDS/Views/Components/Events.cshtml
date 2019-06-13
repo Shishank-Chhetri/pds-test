@@ -1,0 +1,28 @@
+﻿<script type="text/x-template" id="pds-events-detail-template">
+    <div class="event-wrapper">
+        <div class="event-info">
+            <p>{{displayEvent.EventDescription}} <span class="text-small">{{displayEvent.Category}}</span></p>
+            <span class="text-center">{{displayEvent.StartTime}} - {{displayEvent.EndTime}}</span>
+        </div>
+        <div class="attendees">
+            <h4 class="text-center" v-if="displayEvent.AttendeeDetails.length > 0">Attended by</h4>
+            <ul v-for="attendee in displayEvent.AttendeeDetails">
+                <li>{{attendee.Name}}, the {{attendee.PartyAffiliation}} MP for {{attendee.Constituency}}</li>
+            </ul>
+        </div>
+    </div>
+</script>
+<script>
+    Vue.component('events-detail', {
+        template: '#pds-events-detail-template',
+        props: {
+            displayEvent: Object
+        },
+        watcher: {
+        },
+        computed: {
+        },
+        methods: {
+        }
+    });
+</script>

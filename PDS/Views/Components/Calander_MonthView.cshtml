@@ -7,8 +7,10 @@
                 
                 @*i + 1 so that first cell (0) has the right value*@
                 <transition name="fade">
-                    <div class="event-summary" v-show="Math.ceil((i+1)/7) === weekExpanded" v-on:click.stop="">
-                        aafsdsdasdfads
+                    <div class="event-summary" v-show="Math.ceil((i+1)/7) === weekExpanded">
+                       <div v-for="event in events.filter(event => event.Day + firstDay == number && event !== undefined)" v-on:click.stop="$root.events = event; $root.dropdownOpen = true;">
+                           <p v-for="eventDesc in event.Events">{{eventDesc.EventDescription}}</p>
+                       </div> 
                     </div>  
                 </transition>
             </div>
@@ -23,6 +25,8 @@
             displayYear: Number,
             displayMonth: Number //0 based
         },
+        watcher: {
+        },
         computed: {
             lastDate: function () {
                 return new Date(this.displayYear, this.displayMonth + 1, 0).getDate();
@@ -34,17 +38,40 @@
         },
         data: function() {
             return {
-                weekExpanded : null
+                weekExpanded: null,
+                events: [],
             }
         },
         methods: {
-            //getDates: function (year, month) {
-            //    var date = new Date(year, month + 1);
-            //    while (date.getMonth() === month + 1) {
-            //        console.log(date.getDate());
-            //        date = new Date(date.getUTCFullYear, date.getUTCDate, date.getUTCDay + 1);
-            //    }
-            //}
+        },
+        mounted: function () {
+            var me = this;
+            $.ajax({
+                url: '/api/CalanderEvents',
+                method: 'GET',
+                success: function (data) {
+                    me.events = JSON.parse(data).DailyEvents;
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+
+            this.$watch(vm => [vm.displayYear, vm.displayMonth], val => {
+                this.weekExpanded = null;
+                
+                $.ajax({
+                    url: '/api/CalanderEvents/' + (this.displayMonth + 1) + '/' + this.displayYear,
+                    method: 'GET',
+                    success: function (data) {
+                        me.events = JSON.parse(data).DailyEvents;
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+
+            }, { immediate: true }) // run immediately
         },
         created: function () {
             this.dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];

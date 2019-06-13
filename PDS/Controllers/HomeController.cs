@@ -14,6 +14,4 @@ namespace PDS.Controllers
             return View();
         }
     }
-
-    public class helpers : 
 }

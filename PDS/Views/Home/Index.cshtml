@@ -3,13 +3,25 @@
 </section>
 <main>
     @RenderPage("~/Views/Components/Calander.cshtml")
+    @RenderPage("~/Views/Components/Events.cshtml")
+    
+    <div id="calander" v-on:click="dropdownOpen = false;">
+        <section v-show="dropdownOpen" v-on:click.stop="">
+            <h2 class="text-center">Daily View</h2>
+            
+            <events-detail v-for="(event, i) in events.Events" :display-event="event" :key="i"></events-detail>
+        </section>
 
-    <div id="calander">
         <events-calander></events-calander>
     </div>
+
     <script>
         new Vue({
-            el: '#calander'
+            el: '#calander',
+            data: {
+                events: Array,
+                dropdownOpen: false,
+            }
         })
     </script>
 </main>

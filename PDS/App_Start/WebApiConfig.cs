@@ -16,8 +16,8 @@ namespace PDS
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "api/{controller}/{monthNo}/{year}",
+                defaults: new { monthNo = RouteParameter.Optional, year = RouteParameter.Optional }
             );
         }
     }
